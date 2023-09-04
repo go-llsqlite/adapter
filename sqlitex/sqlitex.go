@@ -16,6 +16,7 @@ var (
 	ExecuteScript = sqlitex.ExecuteScript
 	Transaction   = sqlitex.Transaction
 	Open          = sqlitex.Open
+	ExecTransient = sqlitex.ExecTransient
 )
 
 type (

@@ -11,6 +11,7 @@ type (
 	Context      = sqlite.Context
 	Value        = sqlite.Value
 	ResultCode   = sqlite.ResultCode
+	Blob         = sqlite.Blob
 )
 
 const (
@@ -26,11 +27,15 @@ const (
 
 	ResultCodeConstraintUnique = sqlite.ResultConstraintUnique
 	ResultCodeInterrupt        = sqlite.ResultInterrupt
+	ResultCodeOk               = sqlite.ResultOK
+	ResultCodeAbort            = sqlite.ResultAbort
+	ResultCodeGenericError     = sqlite.ResultError
 )
 
 var (
 	BlobValue = sqlite.BlobValue
 	OpenConn  = sqlite.OpenConn
+	ErrCode   = sqlite.ErrCode
 )
 
 // This produces an error code even if it's not an underlying sqlite error. This could differ from
@@ -38,6 +43,3 @@ var (
 func GetResultCode(err error) (ResultCode, bool) {
 	return sqlite.ErrCode(err), true
 }
-
-// Error code extraction looks something like this:
-//sqlite.ErrCode(err) == sqlite.ResultInterrupt
