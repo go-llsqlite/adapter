@@ -6,7 +6,7 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/go-llsqlite/crawshaw"
+	sqlite "github.com/go-llsqlite/crawshaw"
 )
 
 type (
@@ -20,6 +20,7 @@ type (
 	Value      = sqlite.Value
 	OpenFlags  = sqlite.OpenFlags
 	ResultCode = sqlite.ErrorCode
+	Blob       = sqlite.Blob
 )
 
 const (
@@ -35,6 +36,7 @@ const (
 
 	ResultCodeInterrupt        = sqlite.SQLITE_INTERRUPT
 	ResultCodeBusy             = sqlite.SQLITE_BUSY
+	ResultCodeAbort            = sqlite.SQLITE_ABORT
 	ResultCodeConstraintUnique = sqlite.SQLITE_CONSTRAINT_UNIQUE
 	ResultCodeGenericError     = sqlite.SQLITE_ERROR
 )
@@ -81,7 +83,13 @@ func (c *Conn) CreateFunction(name string, impl *FunctionImpl) error {
 func GetResultCode(err error) (_ ResultCode, ok bool) {
 	var crawshawError sqlite.Error
 	if !errors.As(err, &crawshawError) {
+		// Should we attempt to extract old pkg/error style errors like crawshaw's ErrCode does
+		// here?
 		return
 	}
 	return crawshawError.Code, true
 }
+
+// Deprecated. This may differ from GetResultCode in that it returns SQLITE_OK if there's no error,
+// and SQLITE_ERROR if there's an error, but it can't extract a sqlite error code.
+var ErrCode = sqlite.ErrCode

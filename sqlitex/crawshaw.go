@@ -47,6 +47,10 @@ func Exec(conn *sqlite.Conn, query string, resultFn func(stmt *sqlite.Stmt) erro
 	return sqlitex.Exec(conn.Conn, query, resultFn, args...)
 }
 
+func ExecTransient(conn *sqlite.Conn, query string, resultFn func(stmt *sqlite.Stmt) error, args ...interface{}) (err error) {
+	return sqlitex.ExecTransient(conn.Conn, query, resultFn, args...)
+}
+
 type Pool struct {
 	*sqlitex.Pool
 }
