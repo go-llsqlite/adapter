@@ -3,12 +3,11 @@ module github.com/go-llsqlite/adapter
 go 1.21
 
 require (
-	github.com/go-llsqlite/llsqlite v0.0.0-20230612031458-a9e271fe723a
+	github.com/go-llsqlite/crawshaw v0.0.0-20230904103556-219a9360a2c0
 	zombiezen.com/go/sqlite v0.10.1
 )
 
 require (
-	github.com/go-llsqlite/crawshaw v0.0.0-20230904103556-219a9360a2c0 // indirect
 	github.com/google/go-cmp v0.5.9 // indirect
 	github.com/google/uuid v1.3.0 // indirect
 	github.com/mattn/go-isatty v0.0.14 // indirect
