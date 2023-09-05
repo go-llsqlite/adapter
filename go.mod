@@ -1,6 +1,6 @@
 module github.com/go-llsqlite/adapter
 
-go 1.21
+go 1.18
 
 require (
 	github.com/go-llsqlite/crawshaw v0.0.0-20230904103556-219a9360a2c0
