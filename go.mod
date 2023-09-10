@@ -3,7 +3,7 @@ module github.com/go-llsqlite/adapter
 go 1.18
 
 require (
-	github.com/go-llsqlite/crawshaw v0.0.0-20230904103556-219a9360a2c0
+	github.com/go-llsqlite/crawshaw v0.0.0-20230910110433-7e901377eb6c
 	zombiezen.com/go/sqlite v0.10.1
 )
 
