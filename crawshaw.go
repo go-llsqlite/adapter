@@ -39,6 +39,8 @@ const (
 	ResultCodeAbort            = sqlite.SQLITE_ABORT
 	ResultCodeConstraintUnique = sqlite.SQLITE_CONSTRAINT_UNIQUE
 	ResultCodeGenericError     = sqlite.SQLITE_ERROR
+
+	LimitLength = sqlite.SQLITE_LIMIT_LENGTH
 )
 
 var (
